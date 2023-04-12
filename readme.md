@@ -32,7 +32,7 @@ Code Editor (VS Code, Atom, Sublime Text, etc.)
 
 In the previous project, we have used the local backend to store the state file. This is not a good practice as it is not recommended to store the state file locally. In this project, we will be using the S3 backend to store the state file. This will allow us to share the state file with other team members and also allow us to collaborate on the project.
 
-    - Create a file and name it backend.tf and add the following code:
+- Create a file and name it backend.tf and add the following code:
 
 ```
 resource "aws_s3_bucket" "terraform_state" {
