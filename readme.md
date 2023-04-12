@@ -53,9 +53,9 @@ resource "aws_s3_bucket" "terraform_state" {
 ```
 Note: Terraform stores secret data inside state files. Passwords and secret keys processed by resources are always stored in there. There we need to always enable encryption. This is achieved with the [server_side_encryption_configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html)
 
-    - Create a DynamoDB table to handle locks and perform consistency checks. In our previous projects, locks were handled with a local file shown in ```terraform.tfstate.lock.info```. Since we want to enable collaboration, which made us to configure S3 as our backend to store our state file, we need to do the same to handle locking. Therefore, with a cloud database like DynamoDB, anyone running Terraform against the same infrastructure can use a central location to control a situation where Terraform is running at the same time from multiple individuals on our DevOps Team. Add the following code to our ```backend.tf``` file for DynamoDB resource for locking and consistency checking:
+- Create a DynamoDB table to handle locks and perform consistency checks. In our previous projects, locks were handled with a local file shown in ```terraform.tfstate.lock.info```. Since we want to enable collaboration, which made us to configure S3 as our backend to store our state file, we need to do the same to handle locking. Therefore, with a cloud database like DynamoDB, anyone running Terraform against the same infrastructure can use a central location to control a situation where Terraform is running at the same time from multiple individuals on our DevOps Team. Add the following code to our ```backend.tf``` file for DynamoDB resource for locking and consistency checking:
 
-  ```
+```
   resource "aws_dynamodb_table" "terraform_locks" {
   name         = "terraform-locks"
   billing_mode = "PAY_PER_REQUEST"
@@ -109,8 +109,9 @@ Before we apply our current changes let's add an output such that the S3 bucket 
 
 Now let's create a new file and name it ```output.tf``` and add the following code: output "s3_bucket_arn" { value = aws_s3_bucket.terraform_state.arn description = "The ARN of the S3 bucket" } output "dynamodb_table_name" { value = aws_dynamodb_table.terraform_locks.name description = "The name of the DynamoDB table" }
 
-- 
-Now that we have everything ready to go. Let's run ```terraform apply``` to apply our changes. After running ```terraform apply```, we will get the following output:
+- Now that we have everything ready to go. Let's run 
+
+```terraform apply``` to apply our changes. After running ```terraform apply```, we will get the following output:
 
 ```
 terraform apply --auto-approve
@@ -805,12 +806,10 @@ resource "aws_autoscaling_group" "nginx-asg" {
 
 
 }
-
+```
 - The asg-wordpress-tooling.tf file would look like this after refactoring:
 
 ```
-
-
 # attaching autoscaling group of nginx to external load balancer
 resource "aws_autoscaling_attachment" "asg_attachment_nginx" {
   autoscaling_group_name = aws_autoscaling_group.nginx-asg.id
@@ -883,7 +882,7 @@ resource "aws_autoscaling_attachment" "asg_attachment_tooling" {
 - Recall that we are separating the launch templates for the different applications into different files.
 
 
-The ```lt-bastion-nginx.tf``` file would look like this after refactoring:
+- The ```lt-bastion-nginx.tf``` file would look like this after refactoring:
 
 ```
 # ---- Launch template for wordpress and tooling -----
