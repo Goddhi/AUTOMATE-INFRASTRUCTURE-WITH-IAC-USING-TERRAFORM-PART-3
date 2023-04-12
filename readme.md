@@ -1,23 +1,23 @@
 AUTOMATE INFRASTRUCTURE WITH IAC USING TERRAFORM. PART 3 – REFACTORING
 
-Introduction
-prerequisites
-Introducing Backend on S3
-Refactoring
-ALB module
-VPC module
-RDS module
-Autoscaling Group module
-Security Group module
-EFS module -Compute module
-Defining Modules in Root Main.tf
-Conclusion
+- [Introduction](https://github.com/Goddhi/AUTOMATE-INFRASTRUCTURE-WITH-IAC-USING-TERRAFORM-PART-3#introduction)
+- [Prerequisites](https://github.com/Goddhi/AUTOMATE-INFRASTRUCTURE-WITH-IAC-USING-TERRAFORM-PART-3#Prerequisites)
+- [Introducing Backend on S3](https://github.com/Goddhi/AUTOMATE-INFRASTRUCTURE-WITH-IAC-USING-TERRAFORM-PART-3#introducing-backend-on-s3)
+- [Refactoring](https://github.com/Goddhi/AUTOMATE-INFRASTRUCTURE-WITH-IAC-USING-TERRAFORM-PART-3#refactoring)
+- [ALB module](https://github.com/Goddhi/AUTOMATE-INFRASTRUCTURE-WITH-IAC-USING-TERRAFORM-PART-3#alb-module)
+- [VPC module](https://github.com/Goddhi/AUTOMATE-INFRASTRUCTURE-WITH-IAC-USING-TERRAFORM-PART-3#vpc-module)
+- [RDS module](https://github.com/Goddhi/AUTOMATE-INFRASTRUCTURE-WITH-IAC-USING-TERRAFORM-PART-3#rds-module)
+- [Autoscaling Group module](https://github.com/Goddhi/AUTOMATE-INFRASTRUCTURE-WITH-IAC-USING-TERRAFORM-PART-3#autoscaling-group-module)
+- [Security Group module](https://github.com/Goddhi/AUTOMATE-INFRASTRUCTURE-WITH-IAC-USING-TERRAFORM-PART-3#security-group-module)
+- [EFS module -Compute module](https://github.com/Goddhi/AUTOMATE-INFRASTRUCTURE-WITH-IAC-USING-TERRAFORM-PART-3#efs-module)
+-[Defining Modules in Root Main.tf](https://github.com/Goddhi/AUTOMATE-INFRASTRUCTURE-WITH-IAC-USING-TERRAFORM-PART-3#defining-modules-in-root-main.tf)
+- [Conclusion](https://github.com/Goddhi/AUTOMATE-INFRASTRUCTURE-WITH-IAC-USING-TERRAFORM-PART-3#conclusion)
 
 ### Introduction
 
 From our previous project, we have developed a Terraform project that can implement an AWS infrastructure code using Terraform. In this project, we will work on refactoring the code.
 
-Prerequisites
+### Prerequisites
 
 [Terraform](https://www.terraform.io/downloads.html)
 [AWS Account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
@@ -1005,6 +1005,8 @@ user_data = filebase64("${path.module}/tooling.sh")
 Note: The code above creates the launch templates for the WordPress and tooling applications.
 
 - The ```variables.tf``` file would look like this after refactoring:
+
+```
 ### ------- Autoscaling/variables.tf ------- ###
 
 variable "ami-web" {
@@ -1869,3 +1871,23 @@ target_type         = "instance"
 default_action_type = "forward"
 priority            = 99
 ```
+- Now let's run terraform init and terraform validate to check for any left out errors.
+
+```
+$ terraform init
+$ terraform validate
+```
+- Let's run terraform plan and see what changes are to be made
+
+```
+$ terraform plan
+```
+- Let's now run terraform apply to create the resources
+
+```
+$ terraform apply --auto-approve
+```
+### Conclusion
+
+We have been able to refactor our terraform codes to follow an easy-to-maintain structure using modules. If you notice we are still unable to connect to our WordPress and tooling servers. In the next project the goal is to use Ansible to help us automate the configuration.
+
