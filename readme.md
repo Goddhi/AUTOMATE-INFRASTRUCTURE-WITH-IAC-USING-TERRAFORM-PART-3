@@ -19,14 +19,14 @@ From our previous project, we have developed a Terraform project that can implem
 
 ### Prerequisites
 
-[Terraform](https://www.terraform.io/downloads.html)
-[AWS Account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
-[AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
-[AWS IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)
-[AWS IAM User Access Key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
-[AWS S3 Bucket](https://s3.console.aws.amazon.com/s3/)
+- [Terraform](https://www.terraform.io/downloads.html)
+- [AWS Account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
+- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
+- [AWS IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)
+- [AWS IAM User Access Key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
+- [AWS S3 Bucket](https://s3.console.aws.amazon.com/s3/)
 Code Editor (VS Code, Atom, Sublime Text, etc.)
-[Past Project Files]()
+- [Past Project Files](https://github.com/Goddhi/AUTOMATE-INFRASTRUCTURE-WITH-IAC-USING-TERRAFORM-PART-2)
 
 ### Introducing Backend on S3
 
