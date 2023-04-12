@@ -923,8 +923,8 @@ user_data = filebase64("${path.module}/wordpress.sh")
 }
 
 Note: The code above creates the launch templates for the nginx and bastion host.
-
-The ```lt-wordpress-tooling.tf``` file would look like this after refactoring:
+```
+- The ```lt-wordpress-tooling.tf``` file would look like this after refactoring:
 
 ```
 # ---- Launch template for wordpress and tooling -----
